@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 sec - in hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest

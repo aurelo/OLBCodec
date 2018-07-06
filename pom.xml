@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>hr.kaba</groupId>
+    <artifactId>OLBCodec</artifactId>
+    <version>1.0</version>
+
+    <properties>
+        <protoc.version>3.5.1</protoc.version>
+    </properties>
+
+    <dependencies>
+    <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+        <!--<dependency>-->
+            <!--<groupId>com.google.protobuf</groupId>-->
+            <!--<artifactId>protobuf-java</artifactId>-->
+            <!--<version>${protoc.version}</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.1.0</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>1.1.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>5.1.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!--<plugin>-->
+                <!--<groupId>com.github.os72</groupId>-->
+                <!--<artifactId>protoc-jar-maven-plugin</artifactId>-->
+                <!--<version>${protoc.version}</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>generate-sources</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>run</goal>-->
+                        <!--</goals>-->
+
+                        <!--<configuration>-->
+                            <!--&lt;!&ndash;<protocVersion>2.4.1</protocVersion>&ndash;&gt;-->
+                            <!--<inputDirectories>-->
+                                <!--<include>src/main/resources</include>-->
+                            <!--</inputDirectories>-->
+                            <!--<outputTargets>-->
+                                <!--<outputTarget>-->
+                                    <!--<type>java</type>-->
+                                    <!--<addSources>none</addSources>-->
+                                    <!--<outputDirectory>src/main/java</outputDirectory>-->
+                                <!--</outputTarget>-->
+                                <!--<outputTarget>-->
+                                    <!--<type>descriptor</type>-->
+                                    <!--<addSources>none</addSources>-->
+                                    <!--<outputDirectory>src/main/resources</outputDirectory>-->
+                                <!--</outputTarget>-->
+                            <!--</outputTargets>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+</project>
