@@ -9,8 +9,12 @@ import java.util.Map;
 import java.util.Optional;
 
 public interface HISOMessage {
+
+    Base24Header getHeader();
     ProductIndicator getProductType();
-    MessageType getMessegeType();
+    MessageType getMessageType();
+
+    String getPrimaryBitmap();
 
     Map<BitmapField, String> getFields();
 
@@ -18,5 +22,6 @@ public interface HISOMessage {
 
     Optional<TransactionCode.ISOTransactionCode> getISOTransactionalCode();
 
-    HISOMessage respond(Map<BitmapField, String> responseFields);
+    String dataEncoded();
+
 }

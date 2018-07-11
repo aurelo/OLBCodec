@@ -48,6 +48,7 @@ public enum MessageType {
     private final ProductIndicator[] productInicators;
 
 
+
     private final static Map<String, MessageType> codes;
 
     // what message type is response for message requests
@@ -74,9 +75,9 @@ public enum MessageType {
 
     }
 
-    MessageType(String code, ProductIndicator[] productIndicators) {
+    MessageType(String code, ProductIndicator[] productInicators) {
         this.code = code;
-        this.productInicators = productIndicators;
+        this.productInicators = productInicators;
     }
 
     public static MessageType from(String code) {

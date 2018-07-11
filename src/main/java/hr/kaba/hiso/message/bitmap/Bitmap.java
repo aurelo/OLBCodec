@@ -27,6 +27,11 @@ public class Bitmap<E extends Enum<E> & BitmapField> {
 
     public static final int LENGTH = 64;
 
+    public static Bitmap of(Map<BitmapField, String> data, Class<BitmapField> bitmapFieldClass) {
+        //List<BitmapField> sorted = fields.keySet().stream().sorted(Comparator.comparingInt(BitmapField::getOrderingPosition)).collect(Collectors.toList());
+        return null;
+    }
+
 
     private boolean isValidBitmap(String bitmap) {
         return ((bitmap != null) && (bitmap.length() == 16));

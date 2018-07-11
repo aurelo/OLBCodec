@@ -5,95 +5,73 @@ import hr.kaba.hiso.constants.ProductIndicator;
 import hr.kaba.hiso.message.bitmap.Bitmap;
 import hr.kaba.hiso.message.bitmap.BitmapField;
 import hr.kaba.hiso.message.bitmap.PrimaryBitmapField;
-import hr.kaba.hiso.message.bitmap.SecondaryBitmapField;
 import hr.kaba.hiso.message.field.ATMTransactionCode;
 import hr.kaba.hiso.message.field.POSTransactionCode;
 import hr.kaba.hiso.message.field.TransactionCode;
-import hr.kaba.hiso.util.Pair;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+
+/**
+ * A value object representing an OLB message: with header, message type and values
+ * of message fields based on Online do Banke - OLB specification
+ * <p>
+ *
+ * @author Zlatko Gudasić
+ */
 public class OLBMessage implements HISOMessage {
 
-    private final String binaryMessage;
-    private final HISOMessageHeader header;
-    private final String messageBody;
+    private final Base24Header header;
+    private final MessageType messageType;
+    private final Map<BitmapField, String> fieldsValues;
 
-    private Map<BitmapField, String> filedValues = new HashMap<>();
-
-    private final static String ISO = "ISO";
-    private final static int BASE24_HEADER_LENGTH = 9;
-    private final static int MESSAGE_TYPE_LENGTH = 4;
-    private final static int PRIMARY_BITMAP_LENGTH = 16;
-
-    public OLBMessage(HISOMessageHeader header, Map<BitmapField, String> filedValues) {
+    public OLBMessage(Base24Header header, MessageType messageType, Map<BitmapField, String> data) {
         this.header = header;
-        this.filedValues = filedValues;
-
-        boolean existsSecondaryFields = filedValues.keySet().stream().anyMatch(e -> e instanceof SecondaryBitmapField);
-
-        String secondaryBitmap = Bitmap.binaryBitmapFromFields(filedValues.entrySet().stream().filter(entry -> entry.getKey() instanceof SecondaryBitmapField).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
-
-        if (existsSecondaryFields) {
-            this.filedValues.put(PrimaryBitmapField.P1, secondaryBitmap);
-        }
-        else {
-            this.filedValues.remove(PrimaryBitmapField.P1);
-        }
-
-        // recode header with new primary field
-        this.header.recodePrimaryBitmap(filedValues);
-        this.messageBody = Bitmap.encode(filedValues);
-        this.binaryMessage = toString();
+        this.messageType = messageType;
+        this.fieldsValues = data;
     }
 
-    public OLBMessage(String binaryMessage) {
-        this.binaryMessage = binaryMessage;
+    @Override
+    public Base24Header getHeader() {
+        return header;
+    }
 
-        this.header = HISOMessageHeader.parseFrom(binaryMessage);
+    @Override
+    public MessageType getMessageType() {
+        return messageType;
+    }
 
-        this.messageBody = binaryMessage.substring(binaryMessage.indexOf(ISO) + 3 + BASE24_HEADER_LENGTH + MESSAGE_TYPE_LENGTH + PRIMARY_BITMAP_LENGTH);
-
-        Pair<Map<BitmapField, String>, String> parsePrimaryBitmapResult = this.header.getPrimaryBitmap().mapFieldValues(messageBody);
-
-        filedValues.putAll(parsePrimaryBitmapResult.getFirst());
-
-        if (header.isSecondaryBitmapPresent()) {
-            Bitmap<SecondaryBitmapField> secondaryBitmap = new Bitmap(filedValues.get(PrimaryBitmapField.P1), SecondaryBitmapField.class, header.getBase24Header().getProductIndicator());
-
-            Pair<Map<BitmapField, String>, String> parseSecondaryBitmapResult = secondaryBitmap.mapFieldValues(parsePrimaryBitmapResult.getSecond());
-            filedValues.putAll(parseSecondaryBitmapResult.getFirst());
-        }
-
+    public Map<BitmapField, String> getFieldsValues() {
+        return fieldsValues;
     }
 
     @Override
     public ProductIndicator getProductType() {
-        return this.header.getBase24Header().getProductIndicator();
+        return header.getProductIndicator();
     }
 
     @Override
-    public MessageType getMessegeType() {
-        return this.header.getMessageType();
-    }
+    public String getPrimaryBitmap() {
+        String binaryBitmap = Bitmap.binaryBitmapFromFields(
+                getFields()
+                        .entrySet()
+                        .stream()
+                        .filter(e -> e.getKey() instanceof PrimaryBitmapField)
+                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+        );
 
+        return Bitmap.binaryToHex(binaryBitmap);
+    }
 
     @Override
     public Map<BitmapField, String> getFields() {
-        return filedValues;
-    }
-
-
-    public static OLBMessage parseFrom(String binaryMessage) {
-        return new OLBMessage(binaryMessage);
+        return fieldsValues;
     }
 
     @Override
     public Optional<TransactionCode> getTransactionCode() {
-
         Optional<TransactionCode> maybeTransactionCode = Optional.empty();
 
         if (getProductType() == ProductIndicator.ATM) {
@@ -105,6 +83,7 @@ public class OLBMessage implements HISOMessage {
 
 
         return maybeTransactionCode;
+
     }
 
     @Override
@@ -116,20 +95,9 @@ public class OLBMessage implements HISOMessage {
         return Optional.of(getTransactionCode().get().getISOTransactionCode());
     }
 
-    @Override
-    public HISOMessage respond(Map<BitmapField, String> responseFields) {
-        Map<BitmapField, String> newFields = new HashMap<>(this.filedValues);
-        newFields.putAll(responseFields);
-
-        HISOMessageHeader newHeader = this.header.response();
-
-        OLBMessage newMessage = new OLBMessage(newHeader, newFields);
-
-        return newMessage;
-    }
 
     @Override
-    public String toString() {
-        return String.format("%s%s", this.header.toString(), this.messageBody);
+    public String dataEncoded() {
+        return Bitmap.encode(getFields());
     }
 }

@@ -29,7 +29,7 @@ class OLBCodecTest {
 
         assertNotNull(logonRequest);
         assertEquals(ProductIndicator.NMM, logonRequest.getProductType());
-        assertEquals(MessageType.NMM_REQ, logonRequest.getMessegeType());
+        assertEquals(MessageType.NMM_REQ, logonRequest.getMessageType());
 
         assertEquals(expectedFields, logonRequest.getFields());
         assertFalse(logonRequest.getTransactionCode().isPresent());
@@ -51,7 +51,7 @@ class OLBCodecTest {
 
         assertNotNull(logonResponse);
         assertEquals(ProductIndicator.NMM, logonResponse.getProductType());
-        assertEquals(MessageType.NMM_RESP, logonResponse.getMessegeType());
+        assertEquals(MessageType.NMM_RESP, logonResponse.getMessageType());
 
         assertEquals(expectedFields, logonResponse.getFields());
 
@@ -74,7 +74,7 @@ class OLBCodecTest {
 
         assertNotNull(echoRequest);
         assertEquals(ProductIndicator.NMM, echoRequest.getProductType());
-        assertEquals(MessageType.NMM_REQ, echoRequest.getMessegeType());
+        assertEquals(MessageType.NMM_REQ, echoRequest.getMessageType());
 
         assertEquals(expectedFields, echoRequest.getFields());
 
@@ -98,7 +98,7 @@ class OLBCodecTest {
 
         assertNotNull(echoResponse);
         assertEquals(ProductIndicator.NMM, echoResponse.getProductType());
-        assertEquals(MessageType.NMM_RESP, echoResponse.getMessegeType());
+        assertEquals(MessageType.NMM_RESP, echoResponse.getMessageType());
         assertEquals(expectedFields, echoResponse.getFields());
 
         assertFalse(echoResponse.getTransactionCode().isPresent());
@@ -119,7 +119,7 @@ class OLBCodecTest {
 
         assertNotNull(logoffRequestString);
         assertEquals(ProductIndicator.NMM, logoffRequest.getProductType());
-        assertEquals(MessageType.NMM_REQ, logoffRequest.getMessegeType());
+        assertEquals(MessageType.NMM_REQ, logoffRequest.getMessageType());
         assertEquals(expectedFields, logoffRequest.getFields());
 
         assertFalse(logoffRequest.getTransactionCode().isPresent());
@@ -139,7 +139,7 @@ class OLBCodecTest {
 
         assertNotNull(logoffReponse);
         assertEquals(ProductIndicator.NMM, logoffReponse.getProductType());
-        assertEquals(MessageType.NMM_RESP, logoffReponse.getMessegeType());
+        assertEquals(MessageType.NMM_RESP, logoffReponse.getMessageType());
         assertEquals(expectedFields, logoffReponse.getFields());
 
         assertFalse(logoffReponse.getTransactionCode().isPresent());
@@ -175,7 +175,7 @@ class OLBCodecTest {
 
 
         assertEquals(ProductIndicator.ATM, depositRequest.getProductType());
-        assertEquals(MessageType.TRX_REQ, depositRequest.getMessegeType());
+        assertEquals(MessageType.TRX_REQ, depositRequest.getMessageType());
 
         assertEquals(expectedFields, depositRequest.getFields());
 
@@ -214,7 +214,7 @@ class OLBCodecTest {
 
 
         assertEquals(ProductIndicator.ATM, atmIsplataReq.getProductType());
-        assertEquals(MessageType.TRX_REQ, atmIsplataReq.getMessegeType());
+        assertEquals(MessageType.TRX_REQ, atmIsplataReq.getMessageType());
 
         assertEquals(expectedFields, atmIsplataReq.getFields());
 
@@ -255,7 +255,7 @@ class OLBCodecTest {
 
 
         assertEquals(ProductIndicator.POS, posProdajaRate.getProductType());
-        assertEquals(MessageType.TRX_REQ, posProdajaRate.getMessegeType());
+        assertEquals(MessageType.TRX_REQ, posProdajaRate.getMessageType());
 
         assertEquals(expectedFields, posProdajaRate.getFields());
 
@@ -294,7 +294,7 @@ class OLBCodecTest {
         HISOMessage posProdajaRequest = OLBCodec.decode(posProdajaRequestString);
 
         assertEquals(ProductIndicator.POS, posProdajaRequest.getProductType());
-        assertEquals(MessageType.TRX_REQ, posProdajaRequest.getMessegeType());
+        assertEquals(MessageType.TRX_REQ, posProdajaRequest.getMessageType());
 
         assertEquals(expectedFields, posProdajaRequest.getFields());
 
@@ -333,7 +333,7 @@ class OLBCodecTest {
 
 
         assertEquals(ProductIndicator.ATM, atmUpitUStanjeReq.getProductType());
-        assertEquals(MessageType.TRX_REQ, atmUpitUStanjeReq.getMessegeType());
+        assertEquals(MessageType.TRX_REQ, atmUpitUStanjeReq.getMessageType());
 
         assertEquals(expectedFields, atmUpitUStanjeReq.getFields());
 
@@ -375,7 +375,7 @@ class OLBCodecTest {
         HISOMessage posRateStornoReq = OLBCodec.decode(posRateStornoString);
 
         assertEquals(ProductIndicator.POS, posRateStornoReq.getProductType());
-        assertEquals(MessageType.TRX_ADVICE, posRateStornoReq.getMessegeType());
+        assertEquals(MessageType.TRX_ADVICE, posRateStornoReq.getMessageType());
 
         assertEquals(TransactionCode.ISOTransactionCode.MBNET_INSTALMENT_REVERSAL, posRateStornoReq.getISOTransactionalCode().get());
 
@@ -413,7 +413,7 @@ class OLBCodecTest {
         HISOMessage internetProdajaReq = OLBCodec.decode(internetProdajaString);
 
         assertEquals(ProductIndicator.POS, internetProdajaReq.getProductType());
-        assertEquals(MessageType.TRX_REQ, internetProdajaReq.getMessegeType());
+        assertEquals(MessageType.TRX_REQ, internetProdajaReq.getMessageType());
 
         assertEquals(expectedFields, internetProdajaReq.getFields());
 
@@ -453,7 +453,7 @@ class OLBCodecTest {
         HISOMessage posPovratReq = OLBCodec.decode(posPovratString);
 
         assertEquals(ProductIndicator.POS, posPovratReq.getProductType());
-        assertEquals(MessageType.TRX_ADVICE, posPovratReq.getMessegeType());
+        assertEquals(MessageType.TRX_ADVICE, posPovratReq.getMessageType());
 
         assertEquals(expectedFields, posPovratReq.getFields());
 
@@ -493,7 +493,7 @@ class OLBCodecTest {
         HISOMessage posKorekcijaPovrataReq = OLBCodec.decode(posKorekcijaPovratSredstava);
 
         assertEquals(ProductIndicator.POS, posKorekcijaPovrataReq.getProductType());
-        assertEquals(MessageType.TRX_ADVICE, posKorekcijaPovrataReq.getMessegeType());
+        assertEquals(MessageType.TRX_ADVICE, posKorekcijaPovrataReq.getMessageType());
 
         assertEquals(expectedFields, posKorekcijaPovrataReq.getFields());
 
@@ -534,7 +534,7 @@ class OLBCodecTest {
         HISOMessage posKorekcijaPovrataResp = OLBCodec.decode(posKorekcijaPovrataRespString);
 
         assertEquals(ProductIndicator.POS, posKorekcijaPovrataResp.getProductType());
-        assertEquals(MessageType.TRX_ADVICE_RESP, posKorekcijaPovrataResp.getMessegeType());
+        assertEquals(MessageType.TRX_ADVICE_RESP, posKorekcijaPovrataResp.getMessageType());
 
 //        assertEquals(expectedFields, posKorekcijaPovrataResp.getFields());
 
