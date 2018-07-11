@@ -424,17 +424,7 @@ public class FormatRules {
     }
 
     public static MessageType behavesAs(MessageType messageType) {
-
-        MessageType behavesAsTMessageType;
-
-        if (behaveAs.keySet().contains(messageType)){
-            behavesAsTMessageType = behaveAs.get(messageType);
-        }
-        else {
-            behavesAsTMessageType= messageType;
-        };
-
-        return behavesAsTMessageType;
+        return behaveAs.keySet().contains(messageType) ? behaveAs.get(messageType) : messageType;
     }
 
     public static boolean containsField(ProductIndicator productIndicator, MessageType messageType, BitmapField field) {

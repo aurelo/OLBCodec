@@ -6,7 +6,12 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public enum ProductIndicator {
-    NMM("00", "Upravljačka poruka") , ATM("01", "ATM transakcijska poruka"), POS("02", "POS transakcijska poruka"), FHM("08", "Poruka održavanja podataka"), ERR(null, "Unsupported type");
+     NMM("00", "Upravljačka poruka")
+    ,ATM("01", "ATM transakcijska poruka")
+    ,POS("02", "POS transakcijska poruka")
+    ,FHM("08", "Poruka održavanja podataka")
+    ,ERR(null, "Unsupported type")
+    ;
 
 
     private final String code;

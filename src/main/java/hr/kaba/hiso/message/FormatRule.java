@@ -4,8 +4,6 @@ import hr.kaba.hiso.constants.MessageType;
 import hr.kaba.hiso.constants.ProductIndicator;
 import hr.kaba.hiso.message.bitmap.BitmapField;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class FormatRule {

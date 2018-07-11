@@ -7,41 +7,23 @@ import java.util.stream.Collectors;
 public enum MessageType {
 
     NMM_REQ("0800", ProductIndicator.NMM_PRODUCT),
-
     NMM_RESP("0810", ProductIndicator.NMM_PRODUCT),
-
     NMM_REJECT("9xxx", ProductIndicator.NMM_PRODUCT),
-
     TRX_REQ("0200", ProductIndicator.TRANSACTION_PRODUCTS),
-
     TRX_RESP("0210", ProductIndicator.TRANSACTION_PRODUCTS),
-
     TRX_ADVICE("0220", ProductIndicator.TRANSACTION_PRODUCTS),
-
     TRX_ADVICE_REPEAT("0221", ProductIndicator.TRANSACTION_PRODUCTS),
-
     TRX_ADVICE_RESP("0230", ProductIndicator.TRANSACTION_PRODUCTS),
-
     TRX_REVERSAL("0420", ProductIndicator.TRANSACTION_PRODUCTS),
-
     TRX_REVERSAL_REPEAT("0421", ProductIndicator.TRANSACTION_PRODUCTS),
-
     TRX_REVERSAL_RESP("0430", ProductIndicator.TRANSACTION_PRODUCTS),
-
     AUTHORIZATION_REQ("0100", ProductIndicator.POS_PRODUCT),
-
     AUTHORIZATION_RESP("0110", ProductIndicator.POS_PRODUCT),
-
     AUTHORIZATION_ADVICE("0120", ProductIndicator.POS_PRODUCT),
-
     AUTHORIZATION_ADVICE_REPEAT("0121", ProductIndicator.POS_PRODUCT),
-
     AUTHORIZATION_ADVICE_RESP("0130", ProductIndicator.POS_PRODUCT),
-
     FHM_REQ("0300", ProductIndicator.FHM_PRODUCT),
-
     FHM_RESP("0310", ProductIndicator.FHM_PRODUCT)
-
     ;
 
     private final String code;
