@@ -4,16 +4,13 @@ import hr.kaba.hiso.constants.InitiatorType;
 import hr.kaba.hiso.constants.ProductIndicator;
 
 public class Base24Header {
-    private final String originalMessage;
-
     private final ProductIndicator productIndicator;
     private final String releaseNumber;
     private final String status;
     private final InitiatorType originatorCode;
     private final InitiatorType responderCode;
 
-    public Base24Header(String originalMessage, ProductIndicator productIndicator, String releaseNumber, String status, InitiatorType originatorCode, InitiatorType responderCode) {
-        this.originalMessage = originalMessage;
+    public Base24Header(ProductIndicator productIndicator, String releaseNumber, String status, InitiatorType originatorCode, InitiatorType responderCode) {
         this.productIndicator = productIndicator;
         this.releaseNumber = releaseNumber;
         this.status = status;
@@ -63,9 +60,6 @@ public class Base24Header {
         return responderCode;
     }
 
-    public String getOriginalMessage() {
-        return originalMessage;
-    }
 
     public boolean isATM() {
         return getProductIndicator() == ProductIndicator.ATM;
@@ -75,7 +69,11 @@ public class Base24Header {
         return getProductIndicator() == ProductIndicator.POS;
     }
 
-    private static class Builder {
+    public static Base24Header copyWithResponderCode(Base24Header header, InitiatorType responderCode) {
+        return new Base24Header(header.getProductIndicator(), header.getReleaseNumber(), header.getStatus(), header.getOriginatorCode(), responderCode);
+    }
+
+    public static class Builder {
         private String message;
 
         private ProductIndicator productIndicator;
@@ -118,7 +116,7 @@ public class Base24Header {
         }
 
         public Base24Header build() {
-            return new Base24Header(message, productIndicator, releaseNumber, status, originatorCode, responderCode);
+            return new Base24Header(productIndicator, releaseNumber, status, originatorCode, responderCode);
         }
 
     }
@@ -126,6 +124,6 @@ public class Base24Header {
 
     @Override
     public String toString() {
-        return this.originalMessage;
+        return String.format("%s%s%s%s%s", getProductIndicator().getCode(), getReleaseNumber(), getStatus(), getOriginatorCode().getCode(), getResponderCode().getCode());
     }
 }

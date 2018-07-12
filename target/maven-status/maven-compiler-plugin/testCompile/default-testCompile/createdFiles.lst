@@ -1,10 +1,12 @@
 hr\kaba\hiso\message\Base24HeaderTest.class
+hr\kaba\hiso\OLBCodecParsingTest.class
 hr\kaba\hiso\message\bitmap\PrimaryBitmapTest.class
 hr\kaba\hiso\message\bitmap\BitmapTest.class
 hr\kaba\hiso\message\field\TransactionCodeTest.class
-hr\kaba\hiso\OLBCodecTest.class
+hr\kaba\hiso\OLBCodecResponderTest.class
 hr\kaba\hiso\message\OLBMessagesTest.class
 hr\kaba\hiso\message\bitmap\PrimaryBitmapFieldTest.class
 hr\kaba\hiso\message\bitmap\SecondaryBitmapFieldTest.class
+hr\kaba\hiso\OLBCodecEncodingTest.class
 hr\kaba\hiso\constants\MessageTypeTest.class
 hr\kaba\hiso\constants\ResponseCodeTest.class

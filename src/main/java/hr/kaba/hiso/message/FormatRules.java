@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import static hr.kaba.hiso.constants.ProductIndicator.*;
 import static hr.kaba.hiso.constants.MessageType.*;
 
-public class FormatRules {
+class FormatRules {
     public static final List<FormatRule> rules = new ArrayList<>();
 
     private static final Map<MessageType, MessageType> behaveAs = new HashMap<>();
@@ -423,14 +423,14 @@ public class FormatRules {
 
     }
 
-    public static MessageType behavesAs(MessageType messageType) {
+    private static MessageType behavesAs(MessageType messageType) {
         return behaveAs.keySet().contains(messageType) ? behaveAs.get(messageType) : messageType;
     }
 
     public static boolean containsField(ProductIndicator productIndicator, MessageType messageType, BitmapField field) {
         final FormatRule rule = new FormatRule(productIndicator, behavesAs(messageType), field);
 
-        return rules.stream().anyMatch(e -> e.equals(rule));
+        return rules.stream().anyMatch(e -> e.equals(rule) && e.getFieldStatus() == FormatRule.FieldStatus.MANDATORY);
 
     }
 

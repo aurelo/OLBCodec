@@ -1,5 +1,6 @@
 package hr.kaba.hiso.message;
 
+import hr.kaba.hiso.constants.InitiatorType;
 import hr.kaba.hiso.constants.MessageType;
 import hr.kaba.hiso.message.bitmap.Bitmap;
 import hr.kaba.hiso.message.bitmap.BitmapField;
@@ -16,6 +17,9 @@ public class OLBMessages {
     private final static int BASE24_HEADER_LENGTH = 9;
     private final static int MESSAGE_TYPE_LENGTH = 4;
     private final static int PRIMARY_BITMAP_LENGTH = 16;
+
+//    private static byte[] ETX = {0x03};
+    private static String ETX = new String(new byte[]{0x03});
 
     /**
      *
@@ -56,6 +60,10 @@ public class OLBMessages {
         return new OLBMessage(base24Header, messageType, filledValues);
     }
 
+    private static Base24Header respondAsHost(Base24Header header) {
+        return Base24Header.copyWithResponderCode(header, InitiatorType.HOST);
+    }
+
     /**
      * Create a response message based on original and response fields
      * @param originalMessage - message being responded to
@@ -63,6 +71,8 @@ public class OLBMessages {
      * @return response message
      */
     public static OLBMessage respond(HISOMessage originalMessage, Map<BitmapField, String> responseFields) {
+
+        Base24Header responseHeader = respondAsHost(originalMessage.getHeader());
 
         MessageType responseMessageType = MessageType.responseFor(originalMessage.getMessageType());
 
@@ -72,7 +82,7 @@ public class OLBMessages {
         // leave only fields required for appropriate message type / product
         responseFieldsValues = FormatRules.filterFields(originalMessage.getProductType(), responseMessageType, responseFieldsValues);
 
-        return new OLBMessage(originalMessage.getHeader(), responseMessageType, responseFieldsValues);
+        return new OLBMessage(responseHeader, responseMessageType, responseFieldsValues);
     }
 
     /**
@@ -82,7 +92,7 @@ public class OLBMessages {
      */
 
     public static String encode(HISOMessage message) {
-        return String.format("%s%s%s%s%s", ISO, message.getHeader(), message.getMessageType(), message.getPrimaryBitmap(), message.dataEncoded());
+        return String.format("%s%s%s%s%s", ISO, message.getHeader(), message.getMessageType().getCode(), message.getPrimaryBitmap(), message.dataEncoded());
     }
 
 }

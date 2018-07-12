@@ -5,7 +5,6 @@ hr\kaba\hiso\message\field\ATMTransactionCode.class
 App.class
 hr\kaba\hiso\message\field\TransactionCode$AccountType.class
 hr\kaba\hiso\message\bitmap\BitmapField.class
-hr\kaba\hiso\message\Responses$1.class
 hr\kaba\hiso\message\OLBMessage.class
 hr\kaba\hiso\message\bitmap\BitmapField$FieldSize.class
 hr\kaba\hiso\message\bitmap\Bitmap.class
@@ -16,7 +15,6 @@ hr\kaba\hiso\message\HISOMessage.class
 hr\kaba\hiso\message\FormatRule$FieldStatus.class
 hr\kaba\hiso\util\Pair.class
 hr\kaba\hiso\message\field\TransactionCode$TransactionSettlementIndicator.class
-hr\kaba\hiso\message\Responses.class
 hr\kaba\hiso\constants\NetworkManagementInformationCode.class
 hr\kaba\hiso\message\Base24Header$Builder.class
 hr\kaba\hiso\message\bitmap\PrimaryBitmapField.class

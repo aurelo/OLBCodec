@@ -50,13 +50,20 @@ public interface BitmapField extends Comparator<BitmapField> {
 
     default public String encoded(String value) {
 
+        String encodedValue;
+
         if (getFieldSize() == FieldSize.VARIABILE) {
 
             String format = String.format("%%0%dd%%s", Integer.valueOf(getMaxLength()).toString().trim().length());
-            return String.format(format, value.length(), value);
+            encodedValue = String.format(format, value.length(), value);
+        }
+        else {
+            String format = String.format("%%-%ds", getMaxLength()); // padding spaces on max length
+            encodedValue = String.format(format, value);
         }
 
-        return value;
+
+        return encodedValue;
     }
 
 }

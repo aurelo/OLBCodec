@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: hr.kaba.hiso.OLBCodecTest
+Test set: hr.kaba.hiso.OLBCodecResponderTest
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 sec - in hr.kaba.hiso.OLBCodecTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in hr.kaba.hiso.OLBCodecResponderTest

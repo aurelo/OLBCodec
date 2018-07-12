@@ -61,12 +61,12 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testFieldFromPosition" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0"/>
-  <testcase name="testValidFieldsForNTM" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0"/>
-  <testcase name="testCorrectP1" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0"/>
-  <testcase name="testOutOfRangePosition" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0.002"/>
-  <testcase name="testEncodingFixedValue" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0.001"/>
+  <testcase name="testFieldFromPosition" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0.001"/>
+  <testcase name="testValidFieldsForNTM" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0.001"/>
+  <testcase name="testCorrectP1" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0.001"/>
+  <testcase name="testOutOfRangePosition" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0.001"/>
+  <testcase name="testEncodingFixedValue" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0"/>
   <testcase name="testEncodingVariableValue" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0.001"/>
-  <testcase name="testEncodingP32" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0.002"/>
+  <testcase name="testEncodingP32" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0.001"/>
   <testcase name="testNullP1" classname="hr.kaba.hiso.message.bitmap.PrimaryBitmapFieldTest" time="0"/>
 </testsuite>

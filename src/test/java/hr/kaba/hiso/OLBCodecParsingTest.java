@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class OLBCodecTest {
+class OLBCodecParsingTest {
     @Test
     public void testDecodingLogonRequest() {
         String logonRequestString = " DISO0060000100800822000000000000004000000000000000619111227000001001";

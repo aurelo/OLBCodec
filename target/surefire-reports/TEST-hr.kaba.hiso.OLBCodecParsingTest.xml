@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="hr.kaba.hiso.message.OLBMessagesTest" time="0.013" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="hr.kaba.hiso.OLBCodecParsingTest" time="0" tests="16" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2018.1.5"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -61,14 +61,20 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testNullHeaderCreation" classname="hr.kaba.hiso.message.OLBMessagesTest" time="0"/>
-  <testcase name="testParsingEchoRequest" classname="hr.kaba.hiso.message.OLBMessagesTest" time="0"/>
-  <testcase name="testParsingLogoffRequest" classname="hr.kaba.hiso.message.OLBMessagesTest" time="0"/>
-  <testcase name="testParsingLogoffResponse" classname="hr.kaba.hiso.message.OLBMessagesTest" time="0"/>
-  <testcase name="testParsingATMReqUplata" classname="hr.kaba.hiso.message.OLBMessagesTest" time="0.002"/>
-  <testcase name="testParsingATMReqIsplata" classname="hr.kaba.hiso.message.OLBMessagesTest" time="0.001"/>
-  <testcase name="parsingLogonRequest" classname="hr.kaba.hiso.message.OLBMessagesTest" time="0"/>
-  <testcase name="testParsingEchoResponse" classname="hr.kaba.hiso.message.OLBMessagesTest" time="0"/>
-  <testcase name="testParsingLogonResponse" classname="hr.kaba.hiso.message.OLBMessagesTest" time="0"/>
-  <testcase name="testIllegalStringHeaderCreation" classname="hr.kaba.hiso.message.OLBMessagesTest" time="0.002"/>
+  <testcase name="testDecodingPosKorekcijaPovrataSredstava" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingPosKorekcijaPovrataResponse" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingLogoffResponse" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingAtmIsplataRequest" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingLogoffRequest" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingPosProdajaRateRequest" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingProdajaPutemInterneta" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingPosProdajaRequest" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingLogonRequest" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingPosPovrat" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingATMDepositRequest" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingLogonResponse" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingAtmUpitUStanje" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingPosRateStorno" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingEchoRequest" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
+  <testcase name="testDecodingEchoResponse" classname="hr.kaba.hiso.OLBCodecParsingTest" time="0"/>
 </testsuite>

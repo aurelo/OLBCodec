@@ -6,7 +6,7 @@ import hr.kaba.hiso.message.bitmap.BitmapField;
 
 import java.util.Objects;
 
-public class FormatRule {
+class FormatRule {
 
     public enum FieldStatus {
         MANDATORY, OPTIONAL, EMPTY
@@ -27,6 +27,10 @@ public class FormatRule {
 
     public FormatRule(ProductIndicator productIndicator, MessageType messageType, BitmapField field) {
         this(productIndicator, messageType, field, FieldStatus.MANDATORY);
+    }
+
+    public FieldStatus getFieldStatus() {
+        return fieldStatus;
     }
 
     @Override
